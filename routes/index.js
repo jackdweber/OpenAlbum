@@ -5,7 +5,7 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Open Photo' });
+  res.sendFile('index.html', {root: './public/prototype'});
 });
 
 router.get('/api/:library', function(req, res, next){
