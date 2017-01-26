@@ -16,34 +16,58 @@
       </div>
     </div>
     <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/3.6.2/firebase.js"></script>
     <script type="text/javascript">
-    var app = new Vue({
-      el: '#app',
-      data: {
-        image: ''
-      },
-      methods: {
-        onFileChange(e) {
-          var files = e.target.files || e.dataTransfer.files;
-          if (!files.length)
-            return;
-          this.createImage(files[0]);
-        },
-        createImage(file) {
-          var image = new Image();
-          var reader = new FileReader();
-          var vm = this;
+      // Initialize Firebase
+      // TODO: Replace with your project's customized code snippet
+      var config = {
+        apiKey: "AIzaSyDc16Labntx8N1qlhlyTHclZBGzbhMOwBQ",
+        authDomain: "openphoto-73eb8.firebaseapp.com",
+        databaseURL: "https://openphoto-73eb8.firebaseio.com",
+        storageBucket: "openphoto-73eb8.appspot.com",
+        messagingSenderId: "759273320783"
+      };
+      firebase.initializeApp(config);
 
-          reader.onload = (e) => {
-            vm.image = e.target.result;
-          };
-          reader.readAsDataURL(file);
+      // Create a root reference
+      var storageRef = firebase.storage().ref();
+      var tempImgLib = storageRef.child('tempImgLib');
+
+
+      var app = new Vue({
+        el: '#app',
+        data: {
+          image: ''
         },
-        removeImage: function (e) {
-          this.image = '';
+        methods: {
+          onFileChange(e) {
+            var files = e.target.files || e.dataTransfer.files;
+            if (!files.length)
+              return;
+            this.storeImage(files[0]);
+
+          },
+          storeImage(file){
+            var tempimg = tempImgLib.child('image')
+            tempimg.put(file).then(function(snapshot){
+              alert('image Uploaded');
+            });
+          },
+          createImage(file) {
+            var image = new Image();
+            var reader = new FileReader();
+            var vm = this;
+
+            reader.onload = (e) => {
+              vm.image = e.target.result;
+            };
+            reader.readAsDataURL(file);
+          },
+          removeImage: function (e) {
+            this.image = '';
+          }
         }
-      }
-      })
+        })
     </script>
   </body>
 </html>
