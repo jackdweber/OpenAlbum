@@ -5,7 +5,7 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.sendFile('index.html', {root: './public/prototype'});
+  res.sendFile('index.html', {root: './public'});
 });
 
 router.get('/api/:library', function(req, res, next){
