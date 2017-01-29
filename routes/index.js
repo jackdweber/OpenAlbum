@@ -20,8 +20,7 @@ router.get('/api/:library', function(req, res, next){
 });
 
 router.get('/api/upload/:library/:photo', function(req, res, next){
-  var photoId = Math.floor((Math.random() * 1000000000000) + 1);
-  Photo.create({photoUrl: photoId, photoLibrary: req.params.library}, function(error, results){
+  Photo.create({photoUrl: req.params.photo, photoLibrary: req.params.library}, function(error, results){
     if(error){
       res.send('<h1>Error Retreiving Data</h1>');
     }

@@ -7,8 +7,10 @@
   <body>
     <div id="app">
       <div v-if="!image">
-        <h2>Select an image</h2>
+        <h2>Enter a name to nae the library</h2>
         <input type="file" @change="onFileChange">
+        <input type="text" name="" value="" v-model="library">
+        <p>{{ library }}</p>
       </div>
       <div v-else>
         <img :src="image" />
@@ -16,6 +18,7 @@
       </div>
     </div>
     <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/vue.resource/1.0.3/vue-resource.min.js"></script>
     <script src="https://www.gstatic.com/firebasejs/3.6.2/firebase.js"></script>
     <script type="text/javascript">
       // Initialize Firebase
@@ -31,13 +34,13 @@
 
       // Create a root reference
       var storageRef = firebase.storage().ref();
-      var tempImgLib = storageRef.child('tempImgLib');
 
 
       var app = new Vue({
         el: '#app',
         data: {
-          image: ''
+          image: '',
+          library: ''
         },
         methods: {
           onFileChange(e) {
@@ -48,9 +51,18 @@
 
           },
           storeImage(file){
-            var tempimg = tempImgLib.child('image')
+            var photoId = Math.floor((Math.random() * 1000000000000) + 1);
+            var lib = app.library;
+            alert(lib);
+            var templib = storageRef.child(lib);
+            var tempimg = templib.child('' + photoId);
             tempimg.put(file).then(function(snapshot){
-              alert('image Uploaded');
+
+            });
+            this.$http.get('http://localhost:3000/api/upload/' + lib + '/' + photoId).then((response) => {
+              alert("uploaded");
+            }, (response) => {
+              alert('error');
             });
           },
           createImage(file) {
