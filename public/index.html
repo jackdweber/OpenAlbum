@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>OpenPhoto</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" href="stylesheets/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+  <link rel="stylesheet" type= "text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Lato|Oleo+Script" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="header">
+  <div class="container">
+  <h1><span>Open</span>Photo</h1>
+  <p>Group photo sharing made easy.</p>
+  </div>
+</div>
+
+<div class="navigation">
+  <div class="container">
+    <div class="row">
+        <ul>
+          <li id="b1"><a href="#" style="border-right: 1px solid #fff;" data-toggle="modal" data-target="#starthere" data-backdrop="static" data-keyboard="false">Start Your Library</a></li>
+          <li id="b2"><a href="#" style="border-left: 1px solid #fff;">About & More</a></li>
+        </ul>
+    </div>
+  </div
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="starthere" tabindex="-1" role="dialog" aria-labelledby="Start Your Library">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Start Your Library</h4>
+      </div>
+      <div class="modal-body">
+
+  <form>
+    <div class="form-group">
+      <label for="galleryname">Gallery name:</label>
+      <input type="text" class="form-control" id="galleryname">
+    </div>
+  <div class="form-group">
+    <label for="email">Email address:</label>
+    <input type="email" class="form-control" id="email">
+  </div>
+  <div>
+    <label class="imgup "id="getFileLabel" for="getFile">Upload Images</label>
+  <input type="file" id="getFile" style="display: none;"/>
+</div>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" id="cb" style="border-right: none; margin-right: -4px;" data-dismiss="modal">Close</button>
+        <button type="submit" id="cb1">Submit</button>
+      </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="footer">
+  <div class="container">
+      <div class="pull-left">
+        <div class="row">
+        <p>&copy Jack Weber & Armaan Amirani 2017.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+
+<div class="gallery">
+  <div class="container">
+    <a href="#" id="galleryback"><h2>Gallery</h2></a>
+    <div class="row top-buffer">
+      <div class="col-md-3">
+        <a href="#"><img src="http://placehold.it/350?text=OpenPhoto+Placeholder"/></a>
+      </div>
+      <div class="col-md-3">
+        <a href="#"><img src="http://placehold.it/350?text=OpenPhoto+Placeholder"/></a>
+      </div>
+      <div class="col-md-3">
+        <a href="#"><img src="http://placehold.it/350?text=OpenPhoto+Placeholder"/></a>
+      </div>
+      <div class="col-md-3">
+        <a href="#"><img src="http://placehold.it/350?text=OpenPhoto+Placeholder"/></a>
+      </div>
+    </div>
+    <div class="row top-buffer">
+      <div class="col-md-3">
+        <a href="#"><img src="http://placehold.it/350?text=OpenPhoto+Placeholder"/></a>
+      </div>
+      <div class="col-md-3">
+        <a href="#"><img src="http://placehold.it/350?text=OpenPhoto+Placeholder"/></a>
+      </div>
+      <div class="col-md-3">
+        <a href="#"><img src="http://placehold.it/350?text=OpenPhoto+Placeholder"/></a>
+      </div>
+      <div class="col-md-3">
+        <a href="#"><img src="http://placehold.it/350?text=OpenPhoto+Placeholder"/></a>
+      </div>
+    </div>
+    <div class="row top-buffer">
+      <div class="col-md-3">
+        <a href="#"><img src="http://placehold.it/350?text=OpenPhoto+Placeholder"/></a>
+      </div>
+      <div class="col-md-3">
+        <a href="#"><img src="http://placehold.it/350?text=OpenPhoto+Placeholder"/></a>
+      </div>
+      <div class="col-md-3">
+        <a href="#"><img src="http://placehold.it/350?text=OpenPhoto+Placeholder"/></a>
+      </div>
+      <div class="col-md-3">
+        <a href="#"><img src="http://placehold.it/350?text=OpenPhoto+Placeholder"/></a>
+      </div>
+    </div>
+    <div class="row top-buffer" style="margin-bottom: 2%;">
+      <div class="col-md-3">
+        <a href="#"><img src="http://placehold.it/350?text=OpenPhoto+Placeholder"/></a>
+      </div>
+      <div class="col-md-3">
+        <a href="#"><img src="http://placehold.it/350?text=OpenPhoto+Placeholder"/></a>
+      </div>
+      <div class="col-md-3">
+        <a href="#"><img src="http://placehold.it/350?text=OpenPhoto+Placeholder"/></a>
+      </div>
+      <div class="col-md-3">
+        <a href="#"><img src="http://placehold.it/350?text=OpenPhoto+Placeholder"/></a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="crossorigin="anonymous"></script>
+<script src="js/main.js"></script>
+
+</html>
