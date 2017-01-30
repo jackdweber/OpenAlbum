@@ -42,21 +42,17 @@
     <form>
       <div class="form-group">
         <label for="galleryname">Gallery name: {{ library }}</label>
-        <input v-model="library" type="text" class="form-control" id="galleryname">
+        <input v-model="library" type="text" class="form-control text-fields" id="galleryname">
       </div>
     <div class="form-group">
       <label for="email">Email address: {{ email }}</label>
-      <input type="email" class="form-control" id="email" v-model="email">
+      <input type="email" class="form-control text-fields" id="email" v-model="email">
     </div>
-    <div>
-      <label class="imgup "id="getFileLabel" for="getFile">Upload Images</label>
-    <input @change="onFileChange" type="file" id="getFile" style="display: none;">
-  </div>
-
         </div>
         <div class="modal-footer">
           <button type="button" id="cb" style="border-right: none; margin-right: -4px;" data-dismiss="modal">Close</button>
-          <button type="submit" id="cb1">Submit</button>
+          <label class="imgup "id="getFileLabel" for="getFile">Upload Images</label>
+          <input @change="onFileChange" type="file" id="getFile" style="display: none;">
         </form>
         </div>
       </div>
@@ -77,65 +73,24 @@
 
   <div class="gallery">
     <div class="container">
-      <a href="#" id="galleryback"><h2>Gallery</h2></a>
+      <a href="#"><h2>Gallery</h2></a>
       <div class="row top-buffer">
-        <div class="col-md-3">
-          <a href="#"><img src="http://placehold.it/350?text=OpenPhoto+Placeholder"/></a>
-        </div>
-        <div class="col-md-3">
-          <a href="#"><img src="http://placehold.it/350?text=OpenPhoto+Placeholder"/></a>
-        </div>
-        <div class="col-md-3">
-          <a href="#"><img src="http://placehold.it/350?text=OpenPhoto+Placeholder"/></a>
-        </div>
-        <div class="col-md-3">
-          <a href="#"><img src="http://placehold.it/350?text=OpenPhoto+Placeholder"/></a>
-        </div>
-      </div>
-      <div class="row top-buffer">
-        <div class="col-md-3">
-          <a href="#"><img src="http://placehold.it/350?text=OpenPhoto+Placeholder"/></a>
-        </div>
-        <div class="col-md-3">
-          <a href="#"><img src="http://placehold.it/350?text=OpenPhoto+Placeholder"/></a>
-        </div>
-        <div class="col-md-3">
-          <a href="#"><img src="http://placehold.it/350?text=OpenPhoto+Placeholder"/></a>
-        </div>
-        <div class="col-md-3">
-          <a href="#"><img src="http://placehold.it/350?text=OpenPhoto+Placeholder"/></a>
-        </div>
-      </div>
-      <div class="row top-buffer">
-        <div class="col-md-3">
-          <a href="#"><img src="http://placehold.it/350?text=OpenPhoto+Placeholder"/></a>
-        </div>
-        <div class="col-md-3">
-          <a href="#"><img src="http://placehold.it/350?text=OpenPhoto+Placeholder"/></a>
-        </div>
-        <div class="col-md-3">
-          <a href="#"><img src="http://placehold.it/350?text=OpenPhoto+Placeholder"/></a>
-        </div>
-        <div class="col-md-3">
-          <a href="#"><img src="http://placehold.it/350?text=OpenPhoto+Placeholder"/></a>
-        </div>
-      </div>
-      <div class="row top-buffer" style="margin-bottom: 2%;">
-        <div class="col-md-3">
-          <a href="#"><img src="http://placehold.it/350?text=OpenPhoto+Placeholder"/></a>
-        </div>
-        <div class="col-md-3">
-          <a href="#"><img src="http://placehold.it/350?text=OpenPhoto+Placeholder"/></a>
-        </div>
-        <div class="col-md-3">
-          <a href="#"><img src="http://placehold.it/350?text=OpenPhoto+Placeholder"/></a>
-        </div>
-        <div class="col-md-3">
-          <a href="#"><img src="http://placehold.it/350?text=OpenPhoto+Placeholder"/></a>
+        <div class="col-md-3" v-for='url in urls'>
+          <a href="#"><img v-bind:src="url"/></a>
         </div>
       </div>
     </div>
   </div>
+
+  <div class="gallery-about">
+    <div class="container">
+      <a href="#" id="galleryback"><h2>About</h2></a>
+      <div class="row top-buffer">
+
+      </div>
+    </div>
+  </div>
+
 </div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>

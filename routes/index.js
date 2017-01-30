@@ -8,6 +8,10 @@ router.get('/', function(req, res, next) {
   res.sendFile('index.html', {root: './public'});
 });
 
+router.get('/library', function(req, res, next) {
+  res.sendFile('index.html', {root: './public'});
+});
+
 router.get('/api/:library', function(req, res, next){
   Photo.find({photoLibrary: req.params.library}, function(error, results){
     if(error){

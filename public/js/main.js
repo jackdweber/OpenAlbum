@@ -21,16 +21,16 @@ var areenter = function(){ //animated re-entrance for main page
 }
 
 var loadgallery = function(){ //animated loading of gallery
-  $('.gallery').removeClass('animated fadeOut');
-  $('.gallery').show();
-  $('.gallery').addClass('animated fadeIn');
+  $('.gallery-about').removeClass('animated fadeOut');
+  $('.gallery-about').show();
+  $('.gallery-about').addClass('animated fadeIn');
 }
 
 var unloadgallery = function(){ //animated unlaoding of gallery
-  $('.gallery').removeClass('animated fadeIn');
-    $('.gallery').addClass('animated fadeOut');
+  $('.gallery-about').removeClass('animated fadeIn');
+    $('.gallery-about').addClass('animated fadeOut');
     window.setTimeout(function() {
-      $('.gallery').hide();}, 550)}
+      $('.gallery-about').hide();}, 550)}
 
 
 $(document).ready(function(){

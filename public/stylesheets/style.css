@@ -166,3 +166,64 @@ background-size: cover;
   text-decoration: none;
   background-color: #fff;
 }
+
+/*Styles that jack has added*/
+.text-fields{
+  background: none !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
+  border-top: none !important;
+  border-left: none !important;
+  border-right: none !important;
+  border-bottom: 1px solid rgba(255,255,255,0.5) !important;
+}
+
+.text-fields:focus{
+  border-bottom: 1px solid rgba(255,255,255,0.9) !important;
+}
+
+.modal-header{
+  border-bottom: none !important;
+}
+
+.modal-footer{
+  border-top:none !important;
+}
+
+.gallery-about{
+  display: none;
+}
+
+.gallery-about h2{
+  font: 400 40px/1.3 'Oleo Script', Helvetica, sans-serif;
+  text-shadow: 4px 4px 0px rgba(0,0,0,0.1);
+  text-align: center;
+  color: #fff;
+  padding: 10px 0;
+  border-bottom: solid #fff 2px;
+}
+
+.gallery-about h2:hover, a:hover{
+  color: #99D3DF;
+  text-decoration: none !important;
+}
+
+.top-buffer{
+  margin-top: 2%;
+}
+
+.gallery-about img{
+  width: 100%;
+	height: auto;
+	display: block;
+	margin: 0 auto;
+  -webkit-transform: scale(1);
+	transform: scale(1);
+	-webkit-transition: .3s ease-in-out;
+	transition: .3s ease-in-out;
+}
+
+.gallery-about img:hover {
+	-webkit-transform: scale(1.1);
+	transform: scale(1.1);
+}
