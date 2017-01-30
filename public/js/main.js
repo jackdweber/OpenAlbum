@@ -21,16 +21,16 @@ var areenter = function(){ //animated re-entrance for main page
 }
 
 var loadgallery = function(){ //animated loading of gallery
-  $('.gallery-about').removeClass('animated fadeOut');
-  $('.gallery-about').show();
-  $('.gallery-about').addClass('animated fadeIn');
+  $('.about').removeClass('animated bounceOut');
+  $('.about').show();
+  $('.about').addClass('animated bounceIn');
 }
 
 var unloadgallery = function(){ //animated unlaoding of gallery
-  $('.gallery-about').removeClass('animated fadeIn');
-    $('.gallery-about').addClass('animated fadeOut');
+  $('.about').removeClass('animated bounceIn');
+    $('.about').addClass('animated bounceOut');
     window.setTimeout(function() {
-      $('.gallery-about').hide();}, 550)}
+      $('.about').hide();}, 600)}
 
 
 $(document).ready(function(){
@@ -51,9 +51,20 @@ $(document).ready(function(){
     $(this).removeClass('animated pulse');
   });
 
-  $('#b1').click(aexit); //animated exit when starting library
+  $('#b1').click(function(){ //animated exit when starting library
+    aexit()
+    window.setTimeout(function(){
+      $('#b1').hide();
+      $('#b2').hide();
+    },600)
 
-  $('#cb').click(areenter); //animated re entrance when canceling modal
+  });
+
+  $('#cb').click(function() { //animated re entrance when canceling modal
+  $('#b1').show();
+  $('#b2').show();
+  areenter();
+  });
 
   $('#b2').click(function() //animated & timed loading of gallery using "About" button
 {
@@ -66,11 +77,11 @@ $(document).ready(function(){
     $('p').hide();
     $('#b1').hide();
     $('#b2').hide();
-  },550)
-  window.setTimeout(loadgallery, 550);
+  },600)
+  window.setTimeout(loadgallery, 600);
 });
 
-  $('#galleryback').click(function() //animated & timed unloading of gallery back to main page w/ gallery name click
+  $('#aboutback').click(function() //animated & timed unloading of about back to main page w/ about name click
   {
 
     unloadgallery();
@@ -82,7 +93,7 @@ $(document).ready(function(){
     $('p').show();
     $('#b1').show();
     $('#b2').show();
-  },550)
+  },600)
   areenter();
 });
 
@@ -100,7 +111,7 @@ $(document).ready(function(){
     $('.b2').addClass('animated fadeInRight');
 });*/
 
-    $('form').submit(function(e) { //very simple form checks for modal
+    $('#cb1').click(function(e) { //very simple form checks for modal
    var galleryname = $('#galleryname').val();
    var email = $('#email').val();
    var n = email.includes("@")
