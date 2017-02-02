@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>OpenPhoto</title>
+  <title>OpenAlbum</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" type="text/css" href="stylesheets/style.css">
@@ -13,7 +13,7 @@
 <div id="app">
   <div class="header">
     <div class="container">
-    <h1><span>Open</span>Photo</h1>
+    <h1><span>Open</span>Album</h1>
     <p>Group photo sharing made easy.</p>
     </div>
   </div>
@@ -52,7 +52,7 @@
         <div class="modal-footer">
           <button type="button" id="cb" style="border-right: none; margin-right: -4px;" data-dismiss="modal">Close</button>
           <label class="imgup" id="cb1" for="getFile">Upload Images</label>
-          <input @change="onFileChange" type="file" id="getFile" style="display: none;">
+          <input @change="onFileChange" type="file" id="getFile" style="display: none;" multiple>
         </form>
         </div>
       </div>
@@ -69,28 +69,42 @@
       </div>
     </div>
   </div>
-  </body>
 
   <div class="gallery">
     <div class="container">
       <a href="#"><h2>Gallery</h2></a>
-      <div class="row top-buffer">
-        <div class="col-md-3" v-for='url in urls'>
+        <div class="ithing" v-for='url in urls'>
           <a href="#"><img v-bind:src="url"/></a>
         </div>
-      </div>
     </div>
   </div>
 
   <div class="about">
     <div class="container">
       <a href="#" id="aboutback"><h2>About</h2></a>
-      <div class="row top-buffer">
-
+      <div class="row">
+        <div class="col-md-4">
+          <p class="whatis">What is<br><span>Open</span>Album?</p>
+        </div>
+        <div class="col-md-8" style="border-left: 2px solid #fff;">
+          <div stlye="text-align: center;">
+          <p style="text-align: center;">OpenAlbum is a service in which images can be uploaded quickly and seamlessly without an account.</p>
+          <p style="text-align: center;">Simply pick your gallery name, upload your images, and you will have an easily shareable gallery for 24 hours.</p>
+          <p>Features Include:</p>
+        </div>
+          <ul>
+            <li><p>Unique Gallery Address<p></li>
+            <li><p>No account of any type required</p></li>
+            <li><p>Share easily with a simple URL</p></li>
+            <li><p>Gallery will be deleted after 24 hours of being public</p></li>
+          </ul>
+        </div>
       </div>
     </div>
   </div>
-
+  <div class="cloudimage">
+  <a href="#"><img src="img/cloudupload.svg"></a>
+  </div>
 </div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>

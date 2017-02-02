@@ -1,32 +1,29 @@
 var aexit = function(){ //Simple animated exit for main page
-  $('h1').addClass('animated bounceOutUp');
+  $('.header').addClass('animated bounceOutUp');
   $('.footer').addClass('animated fadeOutDown');
-  $('p').addClass('animated bounceOutUp');
   $('#b1').addClass('animated fadeOutLeft');
   $('#b2').addClass('animated fadeOutRight');
 }
 
 var areenter = function(){ //animated re-entrance for main page
-  $('h1').removeClass('animated bounceOutUp');
+  $('.header').removeClass('animated bounceOutUp');
   $('.footer').removeClass('animated fadeOutDown');
-  $('p').removeClass('animated bounceOutUp');
   $('#b1').removeClass('animated fadeOutLeft');
   $('#b2').removeClass('animated fadeOutRight');
 
-  $('h1').addClass('animated bounceInUp');
+  $('.header').addClass('animated bounceInUp');
   $('.footer').addClass('animated fadeInDown');
-  $('p').addClass('animated bounceInUp');
   $('#b1').addClass('animated fadeInLeft');
   $('#b2').addClass('animated fadeInRight');
 }
 
-var loadgallery = function(){ //animated loading of gallery
+var load = function(){ //animated loading of gallery
   $('.about').removeClass('animated bounceOut');
   $('.about').show();
   $('.about').addClass('animated bounceIn');
 }
 
-var unloadgallery = function(){ //animated unlaoding of gallery
+var unload = function(){ //animated unlaoding of gallery
   $('.about').removeClass('animated bounceIn');
     $('.about').addClass('animated bounceOut');
     window.setTimeout(function() {
@@ -66,27 +63,25 @@ $(document).ready(function(){
   areenter();
   });
 
-  $('#b2').click(function() //animated & timed loading of gallery using "About" button
+  $('#b2').click(function() //animated & timed loading of about using "About" button
 {
   aexit();
   window.setTimeout(function(){
-    $('h1').hide();
     $('.header').hide();
     $('.navigation').hide();
     $('.footer').hide();
-    $('p').hide();
     $('#b1').hide();
     $('#b2').hide();
+    /*$('.cloudimage').fadeIn(); //shows cloud upload*/
   },600)
-  window.setTimeout(loadgallery, 600);
+  window.setTimeout(load, 600);
 });
 
   $('#aboutback').click(function() //animated & timed unloading of about back to main page w/ about name click
   {
 
-    unloadgallery();
+    unload();
     window.setTimeout(function(){
-    $('h1').show();
     $('.header').show();
     $('.navigation').show();
     $('.footer').show();
@@ -95,6 +90,14 @@ $(document).ready(function(){
     $('#b2').show();
   },600)
   areenter();
+});
+
+  $('.cloudimage').hover(function(){ //animate on hover for buttons
+    $(this).remove('img');
+    $(this).add('<p>Upload</p>');
+  },
+  function(){
+    $(this).add('<img src="cloudimage.svg"</img');
 });
 
   /*$('#starthere').on('hide.bs.modal', function () {
