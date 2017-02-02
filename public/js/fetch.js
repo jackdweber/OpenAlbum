@@ -35,22 +35,32 @@ var app = new Vue({
     library: '',
     email: '',
     photos: [],
-    urls: []
+    urls: [],
+    uploadProgress: 0,
+    uploadTotal: 0,
+    uploadStatus: 0
   },
   methods: {
     //Reports Errors
     error: function(error){
       alert(error);
     },
+    //Updates the upload status
+    updateProgress(){
+      this.uploadStatus = (this.uploadProgress / this.uploadTotal) * 100;
+    },
     //When the user uploads a file
     onFileChange(e) {
       var files = e.target.files || e.dataTransfer.files;
       if (!files.length)
         return;
-      this.storeImage(files[0]);
+      for(var i = 0; i < files.length; i++){
+        app.storeImage(files[i], i+1, files.length);
+      }
     },
     //Send image to remote
-    storeImage(file){
+    storeImage(file, x, y){
+      app.uploadTotal = y;
       var lib = app.library;
       this.$http.get('http://localhost:3000/api/' + lib).then((response) => {
         return response.json();
@@ -58,20 +68,36 @@ var app = new Vue({
         app.error('Could not get images');
       }).then((json) => {
         if(json.length > 0){
-          app.error('Library name taken')
+          app.error('Library name taken');
         }
         else{
           var photoId = Math.floor((Math.random() * 1000000000000) + 1);
           var templib = storageRef.child(lib);
           var tempimg = templib.child('' + photoId);
           tempimg.put(file).then(function(snapshot){
-              //Successful to Firebase
+            app.uploadProgress++;
+            app.updateProgress();
           });
           this.$http.get('http://localhost:3000/api/upload/' + lib + '/' + photoId).then((response) => {
             //Successful to MongoDB
           }, (response) => {
             app.error('Could not upload');
           });
+        }
+      });
+    },
+    //Checks to see if a library exists
+    checkIfLibraryExists(){
+      var lib = app.library;
+      this.$http.get('http://localhost:3000/api/' + lib).then((response) => {
+        return response.json();
+      }, (response) => {
+        app.error('Could not get images');
+      }).then((json) => {
+        if(json.length > 0){
+          app.error('Library name taken');
+        }
+        else{
         }
       });
     },
