@@ -41,7 +41,7 @@ $(document).ready(function(){
     $(this).removeClass('animated tada');
   });
 
-  $('li, #cb, #cb1, .imgup').hover(function(){ //animate on hover for buttons
+  $('li, #cb, #cb1, #cb2, .imgup').hover(function(){ //animate on hover for buttons
     $(this).addClass('animated pulse');
   },
   function(){

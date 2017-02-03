@@ -136,7 +136,7 @@ background-size: cover;
   color: #fff;
 }
 
-#cb ,#cb1 {
+#cb ,#cb1, #cb2 {
   font-weight: 700;
   border: solid #fff 2px;
   padding: 10px 40px;
@@ -145,7 +145,7 @@ background-size: cover;
   background-color: transparent;
 }
 
-#cb:hover, #cb1:hover{
+#cb:hover, #cb1:hover, #cb2:hover{
   box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
   color: #99D3DF;
   text-decoration: none;
@@ -286,4 +286,23 @@ input[type=text]:focus, input[type=email]:focus{
 .gallery img:hover {
 	-webkit-transform: scale(1.1);
 	transform: scale(1.1);
+}
+
+.progressBar{
+  height:10px;
+  padding:0;
+  margin:0;
+  background: #70909f;
+  width:0;
+  border: 1px solid white;
+}
+
+.alert{
+  position:fixed;
+  width:70%;
+  text-align:center;
+  top:50px;
+  left:15%;
+  display:none;
+  z-index: 2000;
 }

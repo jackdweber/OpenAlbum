@@ -27,6 +27,11 @@ Url = {
     }
 };
 
+//Displays the error message
+function MainError(error){
+  $('.alert').fadeIn().delay(2000).fadeOut();
+}
+
 //Vue app class
 var app = new Vue({
   el: '#app',
@@ -38,16 +43,28 @@ var app = new Vue({
     urls: [],
     uploadProgress: 0,
     uploadTotal: 0,
-    uploadStatus: 0
+    uploadStatus: 0,
+    progressStyle: 'display: none; width: 0;',
+    progressWrapperStyle: 'display:none;',
+    libLink: "",
+    cb2Style: 'border-left: none; display:none;',
+    errorMessage: ''
   },
   methods: {
     //Reports Errors
     error: function(error){
-      alert(error);
+      this.errorMessage = error;
+      MainError(error);
     },
     //Updates the upload status
     updateProgress(){
       this.uploadStatus = (this.uploadProgress / this.uploadTotal) * 100;
+      this.progressStyle = 'width: ' + this.uploadStatus + '%;';
+      this.progressWrapperStyle = 'margin-top:10px; margin-bottom:none;'
+      if(this.uploadStatus === 100){
+        app.libLink = "window.location.href='http://localhost:3000/library?lib=" + app.library + "'";
+        app.cb2Style = '';
+      }
     },
     //When the user uploads a file
     onFileChange(e) {
@@ -60,28 +77,29 @@ var app = new Vue({
     },
     //Send image to remote
     storeImage(file, x, y){
-      app.uploadTotal = y;
+      this.uploadTotal = y;
       var lib = app.library;
       this.$http.get('http://localhost:3000/api/' + lib).then((response) => {
         return response.json();
       }, (response) => {
-        app.error('Could not get images');
+        //app.error('Could not get images');
       }).then((json) => {
         if(json.length > 0){
-          app.error('Library name taken');
+          //app.error('Library name taken');
         }
         else{
           var photoId = Math.floor((Math.random() * 1000000000000) + 1);
           var templib = storageRef.child(lib);
           var tempimg = templib.child('' + photoId);
           tempimg.put(file).then(function(snapshot){
-            app.uploadProgress++;
-            app.updateProgress();
-          });
-          this.$http.get('http://localhost:3000/api/upload/' + lib + '/' + photoId).then((response) => {
-            //Successful to MongoDB
-          }, (response) => {
-            app.error('Could not upload');
+            //Successful upload to google.
+            app.$http.get('http://localhost:3000/api/upload/' + lib + '/' + photoId).then((response) => {
+              //Successful to MongoDB
+              app.uploadProgress++;
+              app.updateProgress();
+            }, (response) => {
+              //app.error('Could not upload');
+            });
           });
         }
       });
@@ -118,6 +136,7 @@ var app = new Vue({
     },
     //Get images from remote and feed them into the library.
     getImages: function(lib){
+      this.error('Loading Photos... Please Wait');
       this.$http.get('http://localhost:3000/api/' + lib).then((response) => {
         return response.json();
       }, (response) => {
