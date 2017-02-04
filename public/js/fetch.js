@@ -174,6 +174,7 @@ function openLib(library){
   $('p').addClass('animated bounceOutUp');
   $('#b1').addClass('animated fadeOutLeft');
   $('#b2').addClass('animated fadeOutRight');
+  $('.cloudimage').fadeIn();
 
   //Bring in the gallery section
   window.setTimeout(function(){

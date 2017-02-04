@@ -110,7 +110,12 @@
     </div>
   </div>
   <div class="cloudimage">
-    <a href="#"><img src="img/cloudupload.svg"></a>
+    <form class="" action="index.html" method="post">
+      <a href="#"><img src="img/cloudupload.svg" id="cloudimage-img"></a>
+      <label class="imgup" id="cb6" for="getFile">Upload Images</label>
+      <input @change="onFileChange" type="file" id="getFile" style="display: none;" multiple>
+    </form>
+
   </div>
   <div class="alert alert-danger">
     {{errorMessage}}

@@ -136,7 +136,7 @@ background-size: cover;
   color: #fff;
 }
 
-#cb ,#cb1, #cb2 {
+#cb ,#cb1, #cb2, #cb6 {
   font-weight: 700;
   border: solid #fff 2px;
   padding: 10px 40px;
@@ -236,11 +236,9 @@ input[type=text]:focus, input[type=email]:focus{
     color: #fff;
 }
 
-.cloudimage{
-  display: none;
-}
 
-.cloudimage img{
+
+.cloudimage{
   width: 50px;
   height:50px;
   right: 50px;
@@ -255,10 +253,18 @@ input[type=text]:focus, input[type=email]:focus{
     animation-direction: alternate;
 }
 
-.cloudimage img:hover{
+.cloudimage:hover{
   width:200px;
   right:25px;
   border-radius: 3%;
+}
+
+.cloudimage a{
+  float:left;
+}
+
+#cb6{
+  float:left;
 }
 
 .top-buffer{

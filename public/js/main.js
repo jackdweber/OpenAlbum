@@ -92,12 +92,12 @@ $(document).ready(function(){
   areenter();
 });
 
+  $('#cb6').hide();
   $('.cloudimage').hover(function(){ //animate on hover for buttons
-    $(this).remove('img');
-    $(this).add('<p>Upload</p>');
+    $('#cb6').show();
   },
   function(){
-    $(this).add('<img src="cloudimage.svg"</img');
+    $('#cb6').hide();
 });
 
   /*$('#starthere').on('hide.bs.modal', function () {
