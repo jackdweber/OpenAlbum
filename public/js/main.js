@@ -67,12 +67,12 @@ $(document).ready(function(){
 {
   aexit();
   window.setTimeout(function(){
+    $('.cloudimage').fadeIn(); //shows cloud upload*/
     $('.header').hide();
     $('.navigation').hide();
     $('.footer').hide();
     $('#b1').hide();
     $('#b2').hide();
-    /*$('.cloudimage').fadeIn(); //shows cloud upload*/
   },600)
   window.setTimeout(load, 600);
 });
@@ -82,6 +82,7 @@ $(document).ready(function(){
 
     unload();
     window.setTimeout(function(){
+    $('.cloudimage').fadeOut(); //shows cloud upload*/
     $('.header').show();
     $('.navigation').show();
     $('.footer').show();

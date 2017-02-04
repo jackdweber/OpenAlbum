@@ -243,12 +243,13 @@ input[type=text]:focus, input[type=email]:focus{
   height:50px;
   right: 50px;
   bottom:50px;
+  display: none;
   position: fixed;
   z-index: 5;
   background-color: #99D3DF;
   padding: 1% 1%;
   border-radius: 10%;
-  transition: padding .5s, border-radius .5s, width .5s, right .5s;
+  transition: border-radius .5s, width .5s, right .5s;
   -webkit-animation-direction: alternate; /* Safari 4.0 - 8.0 */
     animation-direction: alternate;
 }
