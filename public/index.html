@@ -1,3 +1,13 @@
+<!-- Table of contents
+  1. Header and Navigation
+  2. Modal
+  3. Footer
+  4. Gallery
+  5. About page
+  6. Floating Upload Button
+  7. Error Message
+ -->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,12 +15,15 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" type="text/css" href="stylesheets/style.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
-  <link rel="stylesheet" type= "text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <link href="https://fonts.googleapis.com/css?family=Lato|Oleo+Script" rel="stylesheet">
+  <link rel="stylesheet" href="stylesheets/animate.min.css">
+  <link rel="stylesheet" type= "text/css" href="stylesheets/bootstrap.min.css">
+  <link href="stylesheets/fonts.css" rel="stylesheet">
 </head>
 <body>
 <div id="app">
+
+  <!-- 1. Header and Navigation -->
+
   <div class="header">
     <div class="container">
     <h1><span>Open</span>Album</h1>
@@ -29,7 +42,7 @@
     </div
   </div>
 
-  <!-- Modal -->
+  <!-- 2. Modal -->
   <div class="modal fade" id="starthere" tabindex="-1" role="dialog" aria-labelledby="Start Your Library">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
@@ -52,7 +65,7 @@
         <div class="modal-footer">
           <button type="button" id="cb" style="border-right: none; margin-right: -4px;" data-dismiss="modal">Close</button>
           <label class="imgup" id="cb1" for="getFile">Upload Images</label>
-          <input @change="onFileChange" type="file" id="getFile" style="display: none;" multiple>
+          <input @change="onFileChangeNew" type="file" id="getFile" style="display: none;" multiple>
           <button type="button" v-bind:onclick="libLink" id="cb2" v-bind:style="cb2Style">Go to Library</button>
           <!-- <div class="progressBar" v-bind:style="progressStyle"></div> -->
           <div class="progress" v-bind:style="progressWrapperStyle">
@@ -60,12 +73,14 @@
               <span class="sr-only"></span>
             </div>
           </div>
+          <h4 v-bind:style="cb2Style">Copy:</h4><p style="text-align:center;">{{ libLink2 }}</p>
         </form>
         </div>
       </div>
     </div>
   </div>
 
+  <!-- 3. Footer Code -->
   <div class="footer">
     <div class="container">
         <div class="pull-left">
@@ -77,6 +92,8 @@
     </div>
   </div>
 
+
+  <!-- 4. Gallery HTML -->
   <div class="gallery">
     <div class="container">
       <a href="#"><h2>Gallery</h2></a>
@@ -86,6 +103,7 @@
     </div>
   </div>
 
+  <!-- 5. About Page -->
   <div class="about">
     <div class="container">
       <a href="#" id="aboutback"><h2>About</h2></a>
@@ -109,23 +127,34 @@
       </div>
     </div>
   </div>
+
+  <!-- 6. Floating Upload Button -->
   <div class="cloudimage">
     <form class="" action="index.html" method="post">
-      <label class="cloudimage" for="getFile"><img src="img/cloudupload.svg" id="cloudimage-img"></label>
-      <input @change="onFileChange" type="file" id="getFile" style="display: none;" multiple>
+      <label class="cloudimage" for="getFile2">
+        <img src="img/cloudupload.svg" id="cloudimage-img">
+        <span id="uploadSpan">Upload</span>
+        <div class="progress" v-bind:style="progressWrapperStyle">
+          <div class="progress-bar" role="progressbar" v-bind:aria-valuenow="progressStatus" aria-valuemin="0" aria-valuemax="100" v-bind:style="progressStyle">
+            <span class="sr-only"></span>
+          </div>
+        </div>
+      </label>
+      <input @change="onFileChange" type="file" id="getFile2" style="display: none;" multiple>
     </form>
-
   </div>
+
+  <!-- 7. Error Message -->
   <div class="alert alert-danger">
     {{errorMessage}}
   </div>
 </div>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<script src="https://unpkg.com/vue/dist/vue.js"></script>
-<script src="https://cdn.jsdelivr.net/vue.resource/1.0.3/vue-resource.min.js"></script>
-<script src="https://www.gstatic.com/firebasejs/3.6.2/firebase.js"></script>
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/vue.js"></script>
+<script src="js/vue-resource.min.js"></script>
+<script src="js/firebase.js"></script>
 <script src="js/main.js"></script>
 <script src="js/fetch.js"></script>
 

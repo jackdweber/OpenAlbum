@@ -93,12 +93,12 @@ $(document).ready(function(){
   areenter();
 });
 
-  $('#cb6').hide();
-  $('.cloudimage').hover(function(){ //animate on hover for buttons
-    $('#cb6').show();
+  $('#uploadSpan').hide();
+  $('.cloudimage label').hover(function(){ //animate on hover for buttons
+    $('#uploadSpan').fadeIn(1500);
   },
   function(){
-    $('#cb6').hide();
+    $('#uploadSpan').hide();
 });
 
   /*$('#starthere').on('hide.bs.modal', function () {
