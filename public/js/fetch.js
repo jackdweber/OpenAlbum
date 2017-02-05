@@ -92,7 +92,7 @@ var app = new Vue({
     storeImageNew(file, x, y){
       this.uploadTotal = y;
       var lib = app.library;
-      this.$http.get('http://localhost:80/api/' + lib).then((response) => {
+      this.$http.get('http://localhost:3000/api/' + lib).then((response) => {
         return response.json();
       }, (response) => {
         //app.error('Could not get images');
@@ -106,7 +106,7 @@ var app = new Vue({
           var tempimg = templib.child('' + photoId);
           tempimg.put(file).then(function(snapshot){
             //Successful upload to google.
-            app.$http.get('http://localhost:80/api/upload/' + lib + '/' + photoId).then((response) => {
+            app.$http.get('http://localhost:3000/api/upload/' + lib + '/' + photoId).then((response) => {
               //Successful to MongoDB
               app.uploadProgress++;
               app.updateProgress();
@@ -126,7 +126,7 @@ var app = new Vue({
       var tempimg = templib.child('' + photoId);
       tempimg.put(file).then(function(snapshot){
         //Successful upload to google.
-        app.$http.get('http://localhost:80/api/upload/' + lib + '/' + photoId).then((response) => {
+        app.$http.get('http://localhost:3000/api/upload/' + lib + '/' + photoId).then((response) => {
           //Successful to MongoDB
           app.uploadProgress++;
           app.updateProgress();
@@ -139,7 +139,7 @@ var app = new Vue({
     //Checks to see if a library exists
     checkIfLibraryExists(){
       var lib = app.library;
-      this.$http.get('http://localhost:80/api/' + lib).then((response) => {
+      this.$http.get('http://localhost:3000/api/' + lib).then((response) => {
         return response.json();
       }, (response) => {
         app.error('Could not get images');
@@ -170,7 +170,7 @@ var app = new Vue({
     getImages: function(lib){
       this.urls = [];
       this.photos = [];
-      this.$http.get('http://localhost:80/api/' + lib).then((response) => {
+      this.$http.get('http://localhost:3000/api/' + lib).then((response) => {
         return response.json();
       }, (response) => {
         app.error('Could not get images');
