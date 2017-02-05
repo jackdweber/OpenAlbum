@@ -1,6 +1,6 @@
 //File used for setting up mongoose
 var mongoose = require('mongoose');
-var dbUrl = 'mongodb://root@localhost:27017/photos';
+var dbUrl = 'mongodb://0.0.0.0:27017/photos';
 mongoose.connect(dbUrl);
 
 
